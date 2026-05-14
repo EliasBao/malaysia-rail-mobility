@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 400,
+
+  "title": "KTMB Monthly Ridership Trends",
+
+  "data": {
+    "url": "../data/ridership_ktmb_monthly.csv"
+  },
+
+  "mark": {
+    "type": "line",
+    "point": true
+  },
+
+  "encoding": {
+
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Date"
+    },
+
+    "y": {
+      "field": "ridership",
+      "type": "quantitative",
+      "title": "Monthly Ridership"
+    },
+
+    "color": {
+      "field": "service",
+      "type": "nominal",
+      "title": "Rail Service"
+    },
+
+    "tooltip": [
+      {
+        "field": "date",
+        "type": "temporal"
+      },
+      {
+        "field": "service",
+        "type": "nominal"
+      },
+      {
+        "field": "ridership",
+        "type": "quantitative",
+        "format": ","
+      }
+    ]
+  }
+}

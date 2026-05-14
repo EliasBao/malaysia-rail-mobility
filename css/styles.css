@@ -1,0 +1,57 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.page {
+    width: 1400px;
+    background-color: white;
+    margin: auto;
+    padding: 50px;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+}
+
+.section {
+    margin-bottom: 80px;
+}
+
+.section-title {
+    text-align: left;
+    font-size: 34px;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+.section-title-container {
+    margin-bottom: 20px;
+}
+
+.vis-container {
+    width: 100%;
+}
+
+.description-left {
+    padding-right: 25px;
+}
+
+.description-right {
+    padding-left: 25px;
+}
+
+h2 {
+    margin-top: 0px;
+    font-size: 28px;
+}
