@@ -1,0 +1,138 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 360,
+
+  "title": {
+    "text": "Peak Ridership Comparison",
+    "subtitle": "Comparing the highest monthly ridership achieved by Malaysian rail services",
+    "anchor": "middle",
+    "fontSize": 22,
+    "subtitleFontSize": 13
+  },
+
+  "data": {
+    "url": "../data/ridership_ktmb_monthly.csv"
+  },
+
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "max",
+          "field": "ridership",
+          "as": "peak_ridership"
+        }
+      ],
+      "groupby": ["service"]
+    }
+  ],
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusTopLeft": 4,
+        "cornerRadiusTopRight": 4
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "service",
+          "type": "nominal",
+          "sort": {
+            "field": "peak_ridership",
+            "order": "descending"
+          },
+          "title": null,
+          "axis": {
+            "labelAngle": 0,
+            "labelFontSize": 12
+          }
+        },
+
+        "y": {
+          "field": "peak_ridership",
+          "type": "quantitative",
+          "title": "Peak Monthly Ridership",
+          "axis": {
+            "format": "~s",
+            "grid": true
+          }
+        },
+
+        "color": {
+          "field": "service",
+          "type": "nominal",
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "service",
+            "type": "nominal",
+            "title": "Rail Service"
+          },
+          {
+            "field": "peak_ridership",
+            "type": "quantitative",
+            "title": "Peak Ridership",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "dy": -10,
+        "fontSize": 11,
+        "color": "#444"
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "service",
+          "type": "nominal",
+          "sort": {
+            "field": "peak_ridership",
+            "order": "descending"
+          }
+        },
+
+        "y": {
+          "field": "peak_ridership",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "peak_ridership",
+          "type": "quantitative",
+          "format": "~s"
+        }
+      }
+    }
+
+  ],
+
+  "config": {
+
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "domain": false,
+      "tickColor": "#999",
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+
+    "background": "white"
+  }
+}

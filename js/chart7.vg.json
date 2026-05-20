@@ -1,0 +1,183 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 900,
+  "height": 420,
+
+  "data": {
+    "url": "../data/ridership_headline.csv"
+  },
+
+  "transform": [
+
+    {
+      "fold": [
+        "rail_ets",
+        "rail_intercity",
+        "rail_komuter_utara",
+        "rail_tebrau",
+        "rail_komuter"
+      ],
+      "as": ["service", "ridership"]
+    },
+
+    {
+      "calculate": "year(toDate(datum.date))",
+      "as": "year"
+    },
+
+    {
+      "filter": "datum.year == 2022 || datum.year == 2024"
+    },
+
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "ridership",
+          "as": "total_ridership"
+        }
+      ],
+      "groupby": ["service", "year"]
+    },
+
+    {
+      "calculate": "datum.year == 2022 ? 'Early Recovery' : 'Post-Recovery'",
+      "as": "pandemic_period"
+    }
+
+  ],
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "point": {
+          "filled": true,
+          "size": 110
+        }
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "pandemic_period",
+          "type": "ordinal",
+          "title": null,
+
+          "scale": {
+            "domain": [
+              "Early Recovery",
+              "Post-Recovery"
+            ]
+          },
+
+          "axis": {
+            "labelAngle": 0,
+            "labelFontSize": 13
+          }
+        },
+
+        "y": {
+          "field": "total_ridership",
+          "type": "quantitative",
+          "title": "Total Annual Ridership",
+
+          "axis": {
+            "format": "~s",
+            "grid": true
+          }
+        },
+
+        "detail": {
+          "field": "service"
+        },
+
+        "color": {
+          "field": "service",
+          "type": "nominal",
+          "title": "Rail Service"
+        },
+
+        "tooltip": [
+          {
+            "field": "service",
+            "type": "nominal",
+            "title": "Rail Service"
+          },
+
+          {
+            "field": "pandemic_period",
+            "type": "nominal",
+            "title": "Recovery Stage"
+          },
+
+          {
+            "field": "total_ridership",
+            "type": "quantitative",
+            "title": "Total Ridership",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.pandemic_period == 'Post-Recovery'"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "pandemic_period",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "total_ridership",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "service"
+        },
+
+        "color": {
+          "field": "service",
+          "type": "nominal",
+          "legend": null
+        }
+      }
+    }
+
+  ],
+
+  "config": {
+
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "domain": false,
+      "tickColor": "#999",
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+
+    "background": "white"
+  }
+}

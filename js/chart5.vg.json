@@ -1,0 +1,167 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 360,
+
+  "data": {
+    "url": "../data/ridership_ktmb_daily.csv"
+  },
+
+  "params": [
+    {
+      "name": "MonthFilter",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+          null
+        ],
+        "labels": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+          "All Months"
+        ],
+        "name": "Filter Month: "
+      },
+      "value": "Jan"
+    }
+  ],
+
+  "transform": [
+
+    {
+      "calculate": "toDate(datum.date)",
+      "as": "parsed_date"
+    },
+
+    {
+      "calculate": "timeFormat(datum.parsed_date, '%A')",
+      "as": "weekday"
+    },
+
+    {
+      "calculate": "week(datum.parsed_date)",
+      "as": "week_number"
+    },
+
+    {
+      "calculate": "timeFormat(datum.parsed_date, '%b')",
+      "as": "month"
+    },
+
+    {
+      "filter": "MonthFilter == null || datum.month == MonthFilter"
+    }
+
+  ],
+
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 2
+  },
+
+  "encoding": {
+
+    "x": {
+      "field": "weekday",
+      "type": "ordinal",
+      "title": "Weekday",
+      "sort": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 12
+      }
+    },
+
+    "y": {
+      "field": "week_number",
+      "type": "ordinal",
+      "title": "Week of Year",
+      "axis": {
+        "labelFontSize": 11
+      }
+    },
+
+    "color": {
+      "field": "ridership",
+      "type": "quantitative",
+      "title": "Ridership",
+      "scale": {
+        "scheme": "blues"
+      },
+      "legend": {
+        "gradientLength": 300
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "parsed_date",
+        "type": "temporal",
+        "title": "Date"
+      },
+      {
+        "field": "weekday",
+        "type": "nominal",
+        "title": "Weekday"
+      },
+      {
+        "field": "week_number",
+        "type": "quantitative",
+        "title": "Week Number"
+      },
+      {
+        "field": "ridership",
+        "type": "quantitative",
+        "title": "Ridership",
+        "format": ","
+      }
+    ]
+  },
+
+  "config": {
+
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "domain": false,
+      "tickColor": "#999",
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+
+    "background": "white"
+  }
+}

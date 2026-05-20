@@ -18,7 +18,7 @@
 
   "params": [
     {
-      "name": "hover",
+      "name": "hover2",
       "select": {
         "type": "point",
         "fields": ["service"],
@@ -68,7 +68,7 @@
 
     "opacity": {
       "condition": {
-        "param": "hover",
+        "param": "hover2",
         "value": 1
       },
       "value": 0.25

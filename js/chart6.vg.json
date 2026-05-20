@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 380,
+
+  "data": {
+    "url": "../data/ridership_ktmb_monthly.csv"
+  },
+
+  "encoding": {
+
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {
+        "format": "%Y",
+        "labelAngle": 0,
+        "grid": false
+      }
+    },
+
+    "y": {
+      "aggregate": "sum",
+      "field": "ridership",
+      "type": "quantitative",
+      "title": "Monthly Ridership",
+      "axis": {
+        "format": "~s",
+        "grid": true
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "date",
+        "type": "temporal",
+        "title": "Date"
+      },
+      {
+        "aggregate": "sum",
+        "field": "ridership",
+        "type": "quantitative",
+        "title": "Ridership",
+        "format": ","
+      }
+    ]
+  },
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "area",
+        "opacity": 0.28,
+        "color": "#4C78A8"
+      }
+    },
+
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "color": "#2F5D8C"
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 45,
+        "color": "#2F5D8C"
+      }
+    }
+
+  ],
+
+  "config": {
+
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "domain": false,
+      "tickColor": "#999",
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+
+    "background": "white"
+  }
+}

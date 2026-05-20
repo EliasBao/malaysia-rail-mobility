@@ -55,3 +55,25 @@ h2 {
     margin-top: 0px;
     font-size: 28px;
 }
+
+.chart-title-center {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.annotation-center {
+    text-align: center;
+    margin-top: 20px;
+    padding-left: 120px;
+    padding-right: 120px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.chart-card {
+    padding: 20px;
+    margin: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
