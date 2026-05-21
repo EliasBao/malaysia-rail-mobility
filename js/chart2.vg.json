@@ -4,26 +4,20 @@
   "width": "container",
   "height": 420,
 
-  "title": {
-    "text": "Rail Service Composition Evolution",
-    "subtitle": "How Malaysia's railway mobility composition evolved over time",
-    "anchor": "start",
-    "fontSize": 22,
-    "subtitleFontSize": 13
-  },
-
   "data": {
     "url": "../data/ridership_ktmb_monthly.csv"
   },
 
   "params": [
     {
-      "name": "hover2",
+      "name": "legendHover",
       "select": {
         "type": "point",
         "fields": ["service"],
-        "on": "mouseover"
-      }
+        "on": "mouseover",
+        "clear": "mouseout"
+      },
+      "bind": "legend"
     }
   ],
 
@@ -39,7 +33,7 @@
       "field": "date",
       "timeUnit": "yearmonth",
       "type": "temporal",
-      "title": "Date",
+      "title": "Month",
       "axis": {
         "format": "%Y",
         "labelAngle": 0,
@@ -61,6 +55,15 @@
       "field": "service",
       "type": "nominal",
       "title": "Rail Service",
+      "scale": {
+        "range": [
+          "#81D8D0",
+          "#708090",
+          "#A7C7E7",
+          "#002FA7",
+          "#2F4F4F"
+        ]
+      },
       "legend": {
         "orient": "right"
       }
@@ -68,17 +71,18 @@
 
     "opacity": {
       "condition": {
-        "param": "hover2",
+        "param": "legendHover",
         "value": 1
       },
-      "value": 0.25
+      "value": 0.18
     },
 
     "tooltip": [
       {
         "field": "date",
         "type": "temporal",
-        "title": "Date"
+        "title": "Month",
+        "format": "%B %Y"
       },
       {
         "field": "service",

@@ -181,16 +181,19 @@
       </div>
     </div>
 
-    <!-- Section3 Chart6 -->
+    <!-- Section3 Chart6 + Chart7 Row -->
     <div class="pure-g section">
-      <div class="pure-u-1-1">
+
+      <!-- LEFT COLUMN -->
+      <div class="pure-u-1-2">
         <div class="chart-card">
+
           <div class="chart-title-center">
-
             <h2>Pandemic Collapse and Recovery</h2>
-
           </div>
+
           <div id="vis6" class="vis-container"></div>
+
           <div class="annotation-center">
             <p>
 
@@ -200,20 +203,21 @@
 
             </p>
           </div>
+
         </div>
       </div>
-    </div>
-    
-    <!-- Section3 Chart7 -->
-    <div class="pure-g section">
-      <div class="pure-u-1-1">
+
+      <!-- RIGHT COLUMN -->
+      <div class="pure-u-1-2">
         <div class="chart-card">
+
           <div class="chart-title-center">
             <h2>Pre vs Post Pandemic Modal Shift</h2>
           </div>
-          <div id="vis7" class="vis-container"></div>
-          <div class="annotation-center">
 
+          <div id="vis7" class="vis-container"></div>
+
+          <div class="annotation-center">
             <p>
 
               Different Malaysian rail systems experienced uneven post-pandemic
@@ -221,7 +225,40 @@
               substantially stronger mobility rebounds than long-distance rail systems.
 
             </p>
+          </div>
 
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Section 4 Title -->
+    <div class="pure-g section-title-container">
+      <div class="pure-u-1-1">
+        <h2 class="section-title">
+          SECTION 4 — National Rail Structure
+        </h2>
+      </div>
+    </div>
+
+    <!-- Section4 Chart8 -->
+    <div class="pure-g section">
+      <div class="pure-u-1-1">
+        <div class="chart-card">
+          <div class="chart-title-center">
+            <h2>Malaysia Rail Network Structure</h2>
+          </div>
+
+          <div id="vis8" class="vis-container"></div>
+
+          <div class="annotation-center">
+            <p>
+
+              Major interchange stations within the Klang Valley region form the
+              structural backbone of Malaysia’s urban railway network, revealing
+              highly connected mobility corridors across the metropolitan transit system.
+
+            </p>
           </div>
         </div>
       </div>
@@ -238,6 +275,7 @@
     var specVis5 = "js/chart5.vg.json";
     var specVis6 = "js/chart6.vg.json";
     var specVis7 = "js/chart7.vg.json";
+    var specVis8 = "js/chart8.vg.json";
 
     vegaEmbed('#vis1', specVis1, {"actions": false});
     vegaEmbed('#vis2', specVis2, {"actions": false});
@@ -246,6 +284,7 @@
     vegaEmbed('#vis5', specVis5, {"actions": false});
     vegaEmbed('#vis6', specVis6, {"actions": false});
     vegaEmbed('#vis7', specVis7, {"actions": false});
+    vegaEmbed('#vis8', specVis8, {"actions": false});
 
   </script>
 

@@ -67,9 +67,24 @@
         "color": {
           "field": "service",
           "type": "nominal",
-          "legend": null
+          "legend": null,
+          "scale": {
+            "domain": [
+              "ets",
+              "intercity",
+              "komuter",
+              "komuter_utara",
+              "shuttle_tebrau"
+            ],
+            "range": [
+              "#81D8D0",
+              "#708090",
+              "#A7C7E7",
+              "#002FA7",
+              "#2F4F4F"
+            ]
+          }
         },
-
         "tooltip": [
           {
             "field": "service",

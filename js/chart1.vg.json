@@ -4,18 +4,41 @@
   "width": "container",
   "height": 400,
 
-  "title": "KTMB Monthly Ridership Trends",
-
   "data": {
     "url": "../data/ridership_ktmb_monthly.csv"
   },
 
+  "params": [
+    {
+      "name": "legendHover",
+      "select": {
+        "type": "point",
+        "fields": ["service"],
+        "on": "mouseover",
+        "clear": "mouseout"
+      },
+      "bind": "legend"
+    }
+  ],
+
   "mark": {
     "type": "line",
-    "point": true
+    "strokeWidth": 3,
+    "point": {
+      "filled": true,
+      "size": 70
+    }
   },
 
   "encoding": {
+
+    "opacity": {
+      "condition": {
+        "param": "legendHover",
+        "value": 1
+      },
+      "value": 0.15
+    },
 
     "x": {
       "field": "date",
@@ -32,23 +55,40 @@
     "color": {
       "field": "service",
       "type": "nominal",
-      "title": "Rail Service"
+      "title": "Rail Service",
+      "scale": {
+        "range": [
+          "#81D8D0",
+          "#708090",
+          "#A7C7E7",
+          "#002FA7",
+          "#2F4F4F"
+        ]
+      }
     },
 
     "tooltip": [
-      {
-        "field": "date",
-        "type": "temporal"
-      },
+
       {
         "field": "service",
-        "type": "nominal"
+        "type": "nominal",
+        "title": "Rail Service"
       },
+
+      {
+        "field": "date",
+        "type": "temporal",
+        "title": "Month",
+        "format": "%B %Y"
+      },
+
       {
         "field": "ridership",
         "type": "quantitative",
+        "title": "Monthly Ridership",
         "format": ","
       }
+
     ]
   }
 }

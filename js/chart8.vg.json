@@ -1,0 +1,275 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 580,
+  "height": 580,
+
+  "title": {
+    "text": "Malaysia Rail Transfer Flow Structure",
+    "fontSize": 28,
+    "fontWeight": "bold",
+    "anchor": "middle",
+    "dy": -12
+  },
+
+  "data": {
+    "url": "../data/corridor_final.csv"
+  },
+
+  "transform": [
+
+    {
+      "calculate":
+      "datum.line == 'LRT Kelana Jaya Line' ? 1 : 2",
+      "as": "line_level"
+    }
+
+  ],
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 12,
+        "opacity": 0.28,
+        "strokeCap": "round"
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "x_position",
+          "type": "quantitative",
+          "title": null,
+          "axis": null
+        },
+
+        "y": {
+          "field": "line_level",
+          "type": "ordinal",
+          "title": null,
+          "axis": null
+        },
+
+        "detail": {
+          "field": "line"
+        },
+
+        "color": {
+          "field": "line",
+          "type": "nominal",
+          "title": "Rail System",
+
+          "scale": {
+            "domain": [
+              "LRT Kelana Jaya Line",
+              "MRT Kajang Line"
+            ],
+
+            "range": [
+              "#d62828",
+              "#E9C46A"
+            ]
+          }
+        }
+      }
+    },
+
+    {
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ],
+
+      "mark": {
+        "type": "circle",
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "x_position",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "line_level",
+          "type": "ordinal"
+        },
+
+        "size": {
+          "field": "importance",
+          "type": "quantitative",
+          "title": "Station Importance",
+
+          "scale": {
+            "domain": [1, 3],
+            "range": [180, 900]
+          },
+
+          "legend": {
+            "values": [1, 2, 3]
+          }
+        },
+
+        "opacity": {
+          "condition": {
+            "param": "hover",
+            "value": 1
+          },
+          "value": 0.92
+        },
+
+        "color": {
+          "field": "line",
+          "type": "nominal",
+          "legend": null,
+
+          "scale": {
+            "domain": [
+              "LRT Kelana Jaya Line",
+              "MRT Kajang Line"
+            ],
+
+            "range": [
+              "#d62828",
+              "#2a9d8f"
+            ]
+          }
+        },
+
+        "tooltip": [
+
+          {
+            "field": "station",
+            "title": "Station"
+          },
+
+          {
+            "field": "line",
+            "title": "Rail Line"
+          },
+
+          {
+            "field": "importance",
+            "title": "Connectivity Importance"
+          }
+
+        ]
+      }
+    },
+
+    {
+      "transform": [
+
+        {
+          "filter": "datum.label_show == 1"
+        }
+
+      ],
+
+      "mark": {
+        "type": "text",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "#222",
+        "angle": -20
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "x_position",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "line_level",
+          "type": "ordinal"
+        },
+
+        "dy": {
+          "field": "label_offset"
+        },
+
+        "text": {
+          "field": "station"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "color": "#444"
+      },
+
+      "encoding": {
+
+        "x": {
+          "value": 90
+        },
+
+        "y": {
+          "value": 90
+        },
+
+        "text": {
+          "value": "LRT Kelana Jaya Line"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "color": "#444"
+      },
+
+      "encoding": {
+
+        "x": {
+          "value": 90
+        },
+
+        "y": {
+          "value": 370
+        },
+
+        "text": {
+          "value": "MRT Kajang Line"
+        }
+      }
+    }
+
+  ],
+
+  "config": {
+
+    "background": "white",
+
+    "view": {
+      "stroke": null
+    },
+
+    "legend": {
+      "orient": "bottom",
+      "labelFontSize": 13,
+      "titleFontSize": 14
+    }
+  }
+}
