@@ -93,7 +93,10 @@
             ]
           },
           "legend": {
-            "title": "Growth Direction"
+            "title": "Growth Direction",
+            "titleFontSize": 15,
+            "labelFontSize": 13,
+            "symbolSize": 220
           }
         }
       }
@@ -127,8 +130,8 @@
               "Negative Growth"
             ],
             "range": [
-              "#2E8B57",
-              "#D95F5F"
+              "#002FA7",
+              "#708090"
             ]
           },
           "legend": null
@@ -166,6 +169,7 @@
           "field": "growth_percentage",
           "type": "quantitative"
         },
+
 
         "text": {
           "field": "growth_percentage",

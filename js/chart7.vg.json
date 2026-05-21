@@ -44,6 +44,9 @@
     {
       "calculate": "datum.year == 2022 ? 'Early Recovery' : 'Post-Recovery'",
       "as": "pandemic_period"
+    },
+    {
+      "filter": "datum.service != 'rail_komuter'"
     }
 
   ],
@@ -103,14 +106,14 @@
             "domain": [
               "rail_ets",
               "rail_intercity",
-              "rail_komuter",
+              
               "rail_komuter_utara",
               "rail_tebrau"
             ],
             "range": [
               "#81D8D0",
               "#708090",
-              "#A7C7E7",
+              
               "#002FA7",
               "#2F4F4F"
             ]
@@ -174,19 +177,18 @@
         "color": {
           "field": "service",
           "type": "nominal",
-          "legend": null,
           "scale": {
             "domain": [
               "rail_ets",
               "rail_intercity",
-              "rail_komuter",
+              
               "rail_komuter_utara",
               "rail_tebrau"
             ],
             "range": [
               "#81D8D0",
               "#708090",
-              "#A7C7E7",
+              
               "#002FA7",
               "#2F4F4F"
             ]
