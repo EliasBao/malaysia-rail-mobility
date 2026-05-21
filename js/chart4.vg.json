@@ -5,7 +5,7 @@
   "height": 430,
 
   "data": {
-    "url": "../data/ridership_ktmb_monthly.csv"
+    "url": "data/ridership_ktmb_monthly.csv"
   },
 
   "transform": [

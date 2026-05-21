@@ -13,7 +13,7 @@
   },
 
   "data": {
-    "url": "../data/corridor_final.csv"
+    "url": "data/corridor_final.csv"
   },
 
   "transform": [
