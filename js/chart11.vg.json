@@ -1,0 +1,145 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 560,
+  "height": 560,
+
+  "title": {
+    "text": "Urban Rail Mobility Composition in 2024",
+    "fontSize": 28,
+    "fontWeight": "bold",
+    "anchor": "middle",
+    "dy": -10
+  },
+
+  "data": {
+    "url": "data/ridership_headline.csv"
+  },
+
+  "transform": [
+
+    {
+      "fold": [
+        "rail_lrt_ampang",
+        "rail_lrt_kj",
+        "rail_mrt_kajang",
+        "rail_monorail",
+        "rail_mrt_pjy",
+        "rail_ets",
+        "rail_intercity",
+        "rail_komuter",
+        "rail_komuter_utara",
+        "rail_tebrau"
+      ],
+      "as": ["service", "ridership"]
+    },
+
+    {
+      "calculate": "substring(datum.date,0,4)",
+      "as": "year"
+    },
+
+    {
+      "filter": "datum.year == '2024'"
+    },
+
+    {
+      "filter": "isValid(datum.ridership) && datum.ridership != null"
+    },
+
+    {
+      "calculate":
+      "datum.service == 'rail_lrt_ampang' ? 'LRT Ampang' : datum.service == 'rail_lrt_kj' ? 'LRT Kelana Jaya' : datum.service == 'rail_mrt_kajang' ? 'MRT Kajang' : datum.service == 'rail_monorail' ? 'Monorail' : datum.service == 'rail_mrt_pjy' ? 'MRT Putrajaya' : datum.service == 'rail_ets' ? 'ETS' : datum.service == 'rail_intercity' ? 'Intercity' : datum.service == 'rail_komuter' ? 'Komuter' : datum.service == 'rail_komuter_utara' ? 'Komuter Utara' : 'Shuttle Tebrau'",
+      "as": "service_clean"
+    },
+
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "ridership",
+          "as": "total_ridership"
+        }
+      ],
+      "groupby": ["service_clean"]
+    }
+  ],
+
+  "mark": {
+    "type": "arc",
+    "innerRadius": 90,
+    "outerRadius": 205,
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+
+  "encoding": {
+
+    "theta": {
+      "field": "total_ridership",
+      "type": "quantitative"
+    },
+
+    "color": {
+      "field": "service_clean",
+      "type": "nominal",
+
+      "scale": {
+
+        "domain": [
+          "LRT Ampang",
+          "LRT Kelana Jaya",
+          "MRT Kajang",
+          "Monorail",
+          "MRT Putrajaya",
+          "ETS",
+          "Intercity",
+          "Komuter",
+          "Komuter Utara",
+          "Shuttle Tebrau"
+        ],
+
+        "range": [
+          "#81D8D0",
+          "#708090",
+          "#A7C7E7",
+          "#002FA7",
+          "#2F4F4F",
+          "#5F9EA0",
+          "#87CEEB",
+          "#4682B4",
+          "#6A5ACD",
+          "#1B3B6F"
+        ]
+      },
+
+      "legend": {
+        "title": "Rail Service",
+        "orient": "left",
+        "labelFontSize": 15,
+        "titleFontSize": 18,
+        "symbolSize": 200
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "service_clean",
+        "title": "Rail Service"
+      },
+      {
+        "field": "total_ridership",
+        "title": "Ridership",
+        "format": ",.0f"
+      }
+    ]
+  },
+
+  "view": {
+    "stroke": null
+  },
+
+  "config": {
+    "background": "#FFFFFF"
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 420,
+
+  "title": {
+    "text": "Cross-Border Commuting Rhythm",
+    "fontSize": 28,
+    "fontWeight": "bold",
+    "anchor": "middle",
+    "dy": -10
+  },
+
+  "data": {
+    "url": "data/shuttle_tebrau_2026.csv"
+  },
+
+  "transform": [
+
+    {
+      "calculate":
+      "toDate(datum.date + 'T' + datum.time)",
+      "as": "datetime"
+    },
+
+    {
+      "calculate":
+      "timeFormat(datum.datetime, '%H')",
+      "as": "hour"
+    },
+
+    {
+        "calculate":
+        "datum.origin == 'JB Sentral'? 'MY → SG' : 'SG → MY'",
+        "as": "direction"
+    },
+
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "ridership",
+          "as": "total_ridership"
+        }
+      ],
+
+      "groupby": [
+        "hour",
+        "direction"
+      ]
+    },
+
+    {
+        "calculate":
+        "datum.direction == 'SG → MY' ? -datum.total_ridership : datum.total_ridership",
+        "as": "mirrored_ridership"
+    }
+  ],
+
+  "params": [
+    {
+        "name": "hover",
+
+        "select": {
+        "type": "point",
+        "fields": ["direction"],
+        "on": "mouseover",
+        "clear": "mouseout"
+        }
+    }
+  ],
+
+  "mark": {
+    "type": "area",
+    "interpolate": "monotone"
+  },
+
+  "encoding": {
+
+    "x": {
+      "field": "hour",
+      "type": "ordinal",
+
+      "title": "Hour of Day",
+
+      "sort": [
+        "00","01","02","03","04","05",
+        "06","07","08","09","10","11",
+        "12","13","14","15","16","17",
+        "18","19","20","21","22","23"
+      ],
+
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 12,
+        "titleFontSize": 14
+      }
+    },
+
+    "y": {
+      "field": "mirrored_ridership",
+      "type": "quantitative",
+
+      "title": "Passenger Volume",
+
+      "axis": {
+        "labelFontSize": 12,
+        "titleFontSize": 14,
+
+        "labelExpr":
+        "abs(datum.value/1000) + 'k'"
+      }
+    },
+
+    "opacity": {
+        "condition": {
+            "param": "hover",
+            "value": 1
+        },
+
+        "value": 0.22
+    },
+
+    "color": {
+      "field": "direction",
+      "type": "nominal",
+
+      "title": "Travel Direction",
+
+      "scale": {
+        "domain": [
+          "MY → SG",
+          "SG → MY"
+        ],
+
+        "range": [
+            "#81D8D0",
+            "#708090"
+        ]
+      },
+
+      "legend": {
+        "orient": "bottom",
+        "direction": "vertical",
+
+        "labelFontSize": 12,
+        "titleFontSize": 13
+      }
+    },
+
+    "tooltip": [
+
+      {
+        "field": "hour",
+        "type": "ordinal",
+        "title": "Hour"
+      },
+
+      {
+        "field": "direction",
+        "type": "nominal",
+        "title": "Direction"
+      },
+
+      {
+        "field": "total_ridership",
+        "type": "quantitative",
+        "title": "Passenger Volume",
+        "format": ","
+      }
+
+    ]
+  },
+
+  "config": {
+
+    "background": "white",
+
+    "view": {
+      "stroke": null
+    }
+  }
+}

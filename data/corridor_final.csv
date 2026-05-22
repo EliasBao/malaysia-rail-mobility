@@ -7,13 +7,13 @@ Setiawangsa,LRT Kelana Jaya Line,5,3.177713,101.75013,1,365,1,0,0
 Jelatek,LRT Kelana Jaya Line,6,3.184833,101.74807,1,440,1,0,0
 Dato' Keramat,LRT Kelana Jaya Line,7,3.166291,101.724998,1,515,1,0,0
 Damai,LRT Kelana Jaya Line,8,3.166291,101.724998,1,590,1,0,0
-Ampang Park,LRT Kelana Jaya Line,9,3.15976,101.707857,1,690,2,1,35
-KLCC,LRT Kelana Jaya Line,10,3.15976,101.707857,1,790,3,1,35
+Ampang Park,LRT Kelana Jaya Line,9,3.15976,101.707857,1,690,2,1,-35
+KLCC,LRT Kelana Jaya Line,10,3.15976,101.707857,1,790,3,1,-35
 Kampung Baru,LRT Kelana Jaya Line,11,3.166093,101.711031,1,880,1,0,0
 Dang Wangi,LRT Kelana Jaya Line,12,3.1516964,101.6942371,1,955,1,0,0
-Masjid Jamek (KJL),LRT Kelana Jaya Line,13,,,1,1030,2,1,35
+Masjid Jamek (KJL),LRT Kelana Jaya Line,13,,,1,1030,2,1,-35
 Pasar Seni (KJL),LRT Kelana Jaya Line,14,,,1,1160,3,1,-35
-KL Sentral (KJL),LRT Kelana Jaya Line,15,,,1,1280,3,1,35
+KL Sentral (KJL),LRT Kelana Jaya Line,15,,,1,1280,3,1,-35
 Bangsar,LRT Kelana Jaya Line,16,,,1,1385,1,0,0
 Abdullah Hukum,LRT Kelana Jaya Line,17,3.118973,101.672512,1,1460,1,0,0
 Kerinchi,LRT Kelana Jaya Line,18,3.115596,101.668543,1,1535,1,0,0
@@ -51,7 +51,7 @@ Semantan,MRT Kajang Line,12,,,1,890,1,0,0
 Muzium Negara,MRT Kajang Line,13,,,1,965,2,1,-35
 Pasar Seni (SBK),MRT Kajang Line,14,,,1,1040,1,0,0
 Merdeka,MRT Kajang Line,15,,,1,1115,1,0,0
-Bukit Bintang,MRT Kajang Line,16,,,1,1190,3,1,35
+Bukit Bintang,MRT Kajang Line,16,,,1,1190,3,1,-35
 Tun Razak Exchange (TRX),MRT Kajang Line,17,,,1,1330,1,0,0
 Cochrane,MRT Kajang Line,18,,,1,1405,1,0,0
 Maluri (SBK),MRT Kajang Line,19,,,1,1480,1,0,0

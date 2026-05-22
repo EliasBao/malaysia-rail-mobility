@@ -193,7 +193,11 @@
         "fontSize": 14,
         "fontWeight": "bold",
         "color": "#222",
-        "angle": -20
+        "angle": -20,
+        "baseline": "bottom",
+        "align": "left",
+        "dx": 0,
+        "dy": -14
       },
 
       "encoding": {
@@ -208,9 +212,7 @@
           "type": "ordinal"
         },
 
-        "dy": {
-          "field": "label_offset"
-        },
+        
 
         "text": {
           "field": "station"
