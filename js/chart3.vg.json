@@ -4,13 +4,6 @@
   "width": "container",
   "height": 360,
 
-  "title": {
-    "text": "Peak Ridership Comparison",
-    "subtitle": "Comparing the highest monthly ridership achieved by Malaysian rail services",
-    "anchor": "middle",
-    "fontSize": 22,
-    "subtitleFontSize": 13
-  },
 
   "data": {
     "url": "data/ridership_ktmb_monthly.csv"

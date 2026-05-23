@@ -4,14 +4,6 @@
   "width": 520,
   "height": 520,
 
-  "title": {
-    "text": "Urban Rail Mobility Composition in 2019",
-    "fontSize": 28,
-    "fontWeight": "bold",
-    "anchor": "middle",
-    "dy": -10
-  },
-
   "data": {
     "url": "data/ridership_headline.csv"
   },
@@ -52,15 +44,43 @@
         }
       ],
       "groupby": ["service_clean"]
+    },
+
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "total_ridership",
+          "as": "grand_total"
+        }
+      ]
+    },
+
+    {
+      "calculate":
+      "datum.total_ridership / datum.grand_total",
+      "as": "percentage"
+    }
+  ],
+
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "fields": ["service_clean"],
+        "on": "mouseover"
+      }
     }
   ],
 
   "mark": {
     "type": "arc",
-    "innerRadius": 90,
+    "innerRadius": 120,
     "outerRadius": 190,
+    "cornerRadius": 8,
     "stroke": "white",
-    "strokeWidth": 1
+    "strokeWidth": 2
   },
 
   "encoding": {
@@ -78,16 +98,22 @@
 
         "domain": [
           "LRT Ampang",
-          "MRT Kajang",
           "LRT Kelana Jaya",
-          "Monorail"
+          "MRT Kajang",
+          "Monorail",
+          "MRT Putrajaya",
+          "Komuter",
+          "Others"
         ],
 
         "range": [
           "#81D8D0",
           "#708090",
           "#A7C7E7",
-          "#002FA7"
+          "#002FA7",
+          "#2F4F4F",
+          "#4682B4",
+          "#C0C0C0"
         ]
       },
 
@@ -100,6 +126,22 @@
       }
     },
 
+    "opacity": {
+      "condition": {
+        "param": "hover",
+        "value": 1
+      },
+      "value": 0.45
+    },
+
+    "radiusOffset": {
+      "condition": {
+        "param": "hover",
+        "value": 12
+      },
+      "value": 0
+    },
+
     "tooltip": [
       {
         "field": "service_clean",
@@ -109,6 +151,11 @@
         "field": "total_ridership",
         "title": "Ridership",
         "format": ",.0f"
+      },
+      {
+        "field": "percentage",
+        "title": "Share",
+        "format": ".1%"
       }
     ]
   },

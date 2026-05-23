@@ -23,37 +23,58 @@
 </head>
 
 <body>
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+      <div class="hero-content">
+          <h1 class="main-title">
+              Malaysia Rail Mobility
+          </h1>
 
+          <p class="intro-text">
+
+              Exploring long-term ridership trends,
+              commuter recovery, and urban rail
+              transformation across Malaysia.
+
+          </p>
+      </div>
+  </div>
+
+  <!-- MAIN PAGE -->
   <div class="page">
-    <!-- Title Section -->
-    <div class="pure-g">
-      <div class="pure-u-1-1">
-        <h1 class="main-title">
-          Malaysia Rail Mobility
-        </h1>
+    <!-- WHY THIS MATTERS -->
+    <div class="section why-section">
+        <h2 class="why-title">
+          <span class="section-number">
+              Why It Matters
+          </span>
+        </h2>
+        <div class="section-divider"></div>
+        <p class="why-text">
 
-        <p class="intro-text">
+            Malaysia’s railway mobility system has undergone major
+            transformation over the past decade, shaped by rapid
+            urbanisation, cross-border connectivity, and the
+            disruptive impact of the COVID-19 pandemic.
 
-          Malaysia’s railway mobility system has undergone major
-          transformation over the past decade, shaped by rapid
-          urbanisation, cross-border connectivity, and the
-          disruptive impact of the COVID-19 pandemic.
-
-          This visualisation explores how different rail services
-          evolved across Malaysia through ridership trends,
-          recovery trajectories, modal shifts, and metropolitan
-          transfer structures within the national transport
-          network.
+            This visualisation explores how different rail services
+            evolved across Malaysia through ridership trends,
+            recovery trajectories, modal shifts, and metropolitan
+            transfer structures within the national transport
+            network.
 
         </p>
-      </div>
     </div>
-
     <!-- Section 1 Title -->
     <div class="pure-g section-title-container">
       <div class="pure-u-1-1">
         <h2 class="section-title">
-          SECTION 1 — National Rail Overview
+          <span class="section-number">
+              SECTION 1
+          </span>
+          <span class="section-name">
+              — National Rail Overview
+          </span>
         </h2>
       </div>
     </div>
@@ -66,7 +87,7 @@
 
             <h2>KTMB Monthly Ridership Trends</h2>
 
-            <p>
+            <p class="why-text">
 
               KTM Komuter consistently records the highest ridership
               across Malaysia’s rail mobility system, while ETS and
@@ -85,22 +106,24 @@
     </div>
 
     <!-- Section1 Chart2 -->
-    <div class="pure-g section">
-      <div class="pure-u-2-3">
-        <div id="vis2" class="vis-container"></div>
-      </div>
-      <div class="pure-u-1-3">
-        <div class="description-right">
-          <h2>Rail Service Composition Over Time</h2>
+    <div class="chart-card-wide donut-section">
+      <div class="pure-g section">
+        <div class="pure-u-2-3">
+          <div id="vis2" class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description-right">
+            <h2>Rail Service Composition Over Time</h2>
 
-          <p>
+            <p class="why-text">
 
-            KTM Komuter remains the dominant mobility service,
-            while ETS and regional rail systems gradually expand
-            their proportional contribution after the pandemic
-            recovery period across Malaysia’s railway network.
+              KTM Komuter remains the dominant mobility service,
+              while ETS and regional rail systems gradually expand
+              their proportional contribution after the pandemic
+              recovery period across Malaysia’s railway network.
 
-          </p>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -109,7 +132,12 @@
     <div class="pure-g section-title-container">
       <div class="pure-u-1-1">
         <h2 class="section-title">
-          SECTION 2 — Comparing Rail Services
+          <span class="section-number">
+              SECTION 2
+          </span>
+          <span class="section-name">
+              — Comparing Rail Services
+          </span>
         </h2>
       </div>
     </div>
@@ -118,7 +146,7 @@
     <div class="pure-g section">
       <!-- LEFT COLUMN -->
       <div class="pure-u-1-2">
-        <div class="chart-card" style="height: 720px;">
+        <div class="chart-card" style="height: 800px;">
           <div class="chart-title-center">
 
             <h2>Peak Ridership Comparison</h2>
@@ -127,7 +155,7 @@
           <div id="vis3" class="vis-container"></div>
           <div class="annotation-center">
 
-            <p>
+            <p class="why-text">
 
               KTM Komuter overwhelmingly dominates Malaysia’s railway
               mobility demand, recording peak ridership levels far
@@ -142,7 +170,7 @@
 
       <!-- RIGHT COLUMN -->
       <div class="pure-u-1-2">
-        <div class="chart-card" style="height: 720px;">
+        <div class="chart-card" style="height: 800px;">
           <div class="chart-title-center">
 
             <h2>Daily Ridership Intensity Patterns(2025)</h2>
@@ -150,43 +178,43 @@
           </div>
           <div id="vis5" class="vis-container"></div>
           <div class="annotation-center">
+            <p class="why-text">
 
-            <p>
-
-              Railway mobility demand remains consistently concentrated
-              on weekday commuting periods, while May 3 records the
-              most intense ridership activity across the national
-              railway network throughout the observed period.
+              Weekday commuting demand remains consistently dominant 
+              across the calendar, 11 February 2025 recording the 
+              highest daily ridership intensity throughout 
+              Malaysia’s railway network. 
 
             </p>
-
           </div>
         </div>
       </div>
     </div>
 
     <!-- Section2 Chart4 -->
-    <div class="pure-g section">
-      <div class="pure-u-1-1">
-        <div class="chart-title-center">
-          <h2>Fastest Growing Rail Services</h2>
+    <div class="chart-card-wide donut-section">
+      <div class="pure-g section">
+        <div class="pure-u-1-1">
+          <div class="chart-title-center">
+            <h2>Fastest Growing Rail Services</h2>
+          </div>
         </div>
-      </div>
 
-      <div class="pure-u-1-1">
-        <div id="vis4" class="vis-container"></div>
-      </div>
+        <div class="pure-u-1-1">
+          <div id="vis4" class="vis-container"></div>
+        </div>
 
-      <div class="pure-u-1-1">
-        <div class="annotation-center">
-          <p>
+        <div class="pure-u-1-1">
+          <div class="annotation-center">
+            <p class="why-text">
 
-            Cross-border rail mobility demonstrates the strongest
-            post-pandemic growth, while several traditional railway
-            services continue experiencing declining passenger
-            demand across Malaysia’s evolving transport network.
+              Cross-border rail mobility demonstrates the strongest
+              post-pandemic growth, while several traditional railway
+              services continue experiencing declining passenger
+              demand across Malaysia’s evolving transport network.
 
-          </p>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -195,7 +223,12 @@
     <div class="pure-g section-title-container">
       <div class="pure-u-1-1">
         <h2 class="section-title">
-          SECTION 3 — Pandemic and Recovery Storytelling
+          <span class="section-number">
+              SECTION 3
+          </span>
+          <span class="section-name">
+              — Pandemic and Recovery Storytelling
+          </span>
         </h2>
       </div>
     </div>
@@ -205,7 +238,7 @@
 
       <!-- LEFT COLUMN -->
       <div class="pure-u-1-2">
-        <div class="chart-card" style="height: 720px;">
+        <div class="chart-card" style="height: 800px;">
 
           <div class="chart-title-center">
             <h2>Pandemic Collapse and Recovery</h2>
@@ -214,7 +247,7 @@
           <div id="vis6" class="vis-container"></div>
 
           <div class="annotation-center">
-            <p>
+            <p class="why-text">
 
               Malaysian railway mobility experienced a severe pandemic
               collapse before entering a rapid recovery phase, with
@@ -229,7 +262,7 @@
 
       <!-- RIGHT COLUMN -->
       <div class="pure-u-1-2">
-        <div class="chart-card" style="height: 720px;">
+        <div class="chart-card" style="height: 800px;">
 
           <div class="chart-title-center">
             <h2>Pre vs Post Pandemic Modal Shift</h2>
@@ -238,7 +271,7 @@
           <div id="vis7" class="vis-container"></div>
 
           <div class="annotation-center">
-            <p>
+            <p class="why-text">
 
               Regional and commuter rail systems experienced the
               strongest post-pandemic ridership recovery, while
@@ -251,25 +284,66 @@
       </div>
     </div>
 
-    <!-- TEST CHART10 -->
+    <!-- Donut Comparison Section Chart 10 & 11 -->
 
-    <div>
+    <div class="chart-card-wide donut-section">
+      <!-- SECTION TITLE -->
+      <h1 class="comparison-title">
+        Urban Rail Mobility Transformation
+      </h1>
+      <div class="pure-g middle-align">
 
-      <div id="vis10"></div>
+        <!-- LEFT DONUT -->
+        <div class="pure-u-10-24 style="transform: translateX(60px);"">
+          <div class="donut-wrapper">
+            <div id="vis10" class="vis-container"></div>
+            <div class="donut-center-label left-label">
+              2019
+            </div>
+          </div>
+        </div>
 
-    </div>
+        <!-- MIDDLE ANNOTATION -->
+        <div class="pure-u-4-24">
+          <div class="donut-annotation">
 
-    <div>
+            <h2>Network Expansion</h2>
 
-      <div id="vis11"></div>
+            <p class="why-text">
 
+              In 2019, Malaysia’s urban rail mobility was
+              concentrated around a few dominant corridors.
+              By 2024, the network became more diversified,
+              driven by MRT expansion and the growing role
+              of commuter rail services.
+
+            </p>
+
+          </div>
+        </div>
+
+        <!-- RIGHT DONUT -->
+        <div class="pure-u-10-24" style="transform: translateX(130px);">
+          <div class="donut-wrapper">
+            <div id="vis11" class="vis-container"></div>
+            <div class="donut-center-label">
+              2024
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Section 4 Title -->
     <div class="pure-g section-title-container">
       <div class="pure-u-1-1">
         <h2 class="section-title">
-          SECTION 4 — National Rail Structure
+          <span class="section-number">
+              SECTION 4
+          </span>
+          <span class="section-name">
+              — National Rail Structure
+          </span>
         </h2>
       </div>
     </div>
@@ -282,7 +356,7 @@
           <div id="vis8" class="vis-container"></div>
 
           <div class="annotation-center">
-            <p>
+            <p class="why-text">
 
               Major interchange stations remain concentrated around
               Kuala Lumpur’s urban core, highlighting the structural
@@ -308,7 +382,7 @@
           <div class="description-right">
             <h2>Cross-Border Mobility Corridor</h2>
 
-            <p>
+            <p class="why-text">
 
               The Johor–Singapore Shuttle Tebrau corridor demonstrates
               highly directional cross-border commuter mobility, with
