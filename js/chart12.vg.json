@@ -1,0 +1,159 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 520,
+
+  "data": {
+    "url": "data/ets_2026.csv"
+  },
+
+  "transform": [
+
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "ridership",
+          "as": "total_ridership"
+        }
+      ],
+      "groupby": [
+        "origin",
+        "destination"
+      ]
+    },
+
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "total_ridership",
+          "order": "descending"
+        }
+      ]
+    },
+
+    {
+      "filter": "datum.rank <= 15"
+    }
+
+  ],
+
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "on": "mouseover",
+        "clear": "mouseout"
+      }
+    }
+  ],
+
+  "mark": {
+    "type": "circle"
+    
+  },
+
+  "encoding": {
+
+    "x": {
+      "field": "origin",
+      "type": "nominal",
+      "title": "Origin Station",
+      "sort": "-y",
+      "axis": {
+        "labelAngle": -35,
+        "labelLimit": 120
+      }
+    },
+
+    "y": {
+      "field": "destination",
+      "type": "nominal",
+      "title": "Destination Station"
+    },
+
+    "opacity": {
+      "condition": {
+        "param": "hover",
+        "value": 1
+      },
+      "value": 0.2
+    },
+
+    "size": {
+      "field": "total_ridership",
+      "type": "quantitative",
+
+      "scale": {
+        "range": [200, 3000]
+      },
+
+      "title": ""
+    },
+
+    
+
+    "color": {
+      "field": "total_ridership",
+      "type": "quantitative",
+
+      "scale": {
+        "scheme": "blues"
+      },
+
+      "title": "Passenger Flow Intensity",
+
+      "legend": {
+        "orient": "right"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "origin",
+        "type": "nominal",
+        "title": "Origin"
+      },
+      {
+        "field": "destination",
+        "type": "nominal",
+        "title": "Destination"
+      },
+      {
+        "field": "total_ridership",
+        "type": "quantitative",
+        "title": "Total Ridership",
+        "format": ","
+      }
+    ]
+  },
+
+  "config": {
+
+    "background": "white",
+
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "grid": true,
+      "gridColor": "#e5e5e5",
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    }
+  }
+}

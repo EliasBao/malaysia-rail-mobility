@@ -4,14 +4,6 @@
   "width": "container",
   "height": 420,
 
-  "title": {
-    "text": "Cross-Border Commuting Rhythm",
-    "fontSize": 28,
-    "fontWeight": "bold",
-    "anchor": "middle",
-    "dy": -10
-  },
-
   "data": {
     "url": "data/shuttle_tebrau_2026.csv"
   },

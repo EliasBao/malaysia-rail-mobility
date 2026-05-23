@@ -42,7 +42,7 @@
     },
 
     {
-      "calculate": "datum.year == 2022 ? 'Early Recovery' : 'Post-Recovery'",
+      "calculate": "datum.year == 2022 ? 'Early Recovery(2022)' : 'Post-Recovery(2024)'",
       "as": "pandemic_period"
     },
     {
@@ -52,6 +52,25 @@
   ],
 
   "layer": [
+
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [4,4],
+        "color": "#D0D0D0",
+        "strokeWidth": 1.5
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "pandemic_period",
+          "type": "ordinal"
+        }
+      }
+    },
+
+    
 
     {
       "mark": {
@@ -72,8 +91,8 @@
 
           "scale": {
             "domain": [
-              "Early Recovery",
-              "Post-Recovery"
+              "Early Recovery(2022)",
+              "Post-Recovery(2024)"
             ]
           },
 
