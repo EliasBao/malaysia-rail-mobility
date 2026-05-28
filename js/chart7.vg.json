@@ -47,6 +47,11 @@
     },
     {
       "filter": "datum.service != 'rail_komuter'"
+    },
+    {
+      "calculate":
+      "datum.service == 'rail_ets' ? 'ETS' : datum.service == 'rail_intercity' ? 'Intercity' : datum.service == 'rail_komuter_utara' ? 'Komuter Utara' : 'Shuttle Tebrau'",
+      "as": "service_label"
     }
 
   ],
@@ -118,21 +123,19 @@
         },
 
         "color": {
-          "field": "service",
+          "field": "service_label",
           "type": "nominal",
           "title": "Rail Service",
           "scale": {
             "domain": [
-              "rail_ets",
-              "rail_intercity",
-              
-              "rail_komuter_utara",
-              "rail_tebrau"
+              "ETS",
+              "Intercity",
+              "Komuter Utara",
+              "Shuttle Tebrau"
             ],
             "range": [
               "#81D8D0",
               "#708090",
-              
               "#002FA7",
               "#2F4F4F"
             ]
@@ -141,7 +144,7 @@
 
         "tooltip": [
           {
-            "field": "service",
+            "field": "service_label",
             "type": "nominal",
             "title": "Rail Service"
           },
@@ -190,28 +193,12 @@
         },
 
         "text": {
-          "field": "service"
+          "field": "service_label"
         },
 
         "color": {
-          "field": "service",
-          "type": "nominal",
-          "scale": {
-            "domain": [
-              "rail_ets",
-              "rail_intercity",
-              
-              "rail_komuter_utara",
-              "rail_tebrau"
-            ],
-            "range": [
-              "#81D8D0",
-              "#708090",
-              
-              "#002FA7",
-              "#2F4F4F"
-            ]
-          }
+          "field": "service_label",
+          "type": "nominal"
         }
       }
     }

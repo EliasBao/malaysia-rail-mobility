@@ -1,0 +1,194 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 620,
+
+  "projection": {
+    "type": "mercator",
+    "center": [110.2, 4.2],
+    "scale": 3800
+  },
+
+  "params": [
+    {
+      "name": "Quarter_Select",
+
+      "value": "2025-07-01",
+
+      "bind": {
+        "input": "select",
+
+        "options": [
+          "2023-01-01",
+          "2023-04-01",
+          "2023-07-01",
+          "2023-10-01",
+
+          "2024-01-01",
+          "2024-04-01",
+          "2024-07-01",
+          "2024-10-01",
+
+          "2025-01-01",
+          "2025-04-01",
+          "2025-07-01"
+        ],
+
+        "labels": [
+          "2023 Q1",
+          "2023 Q2",
+          "2023 Q3",
+          "2023 Q4",
+
+          "2024 Q1",
+          "2024 Q2",
+          "2024 Q3",
+          "2024 Q4",
+
+          "2025 Q1",
+          "2025 Q2",
+          "2025 Q3"
+        ],
+
+        "name": "Select Quarter: "
+      }
+    }
+  ],
+
+  "data": {
+    "url": "data/lfs_qtr_state.csv"
+  },
+
+  "transform": [
+
+    {
+      "filter":
+      "timeFormat(toDate(datum.date), '%Y-%m-%d') == Quarter_Select"
+    },
+
+    {
+        "calculate":
+        "datum.state == 'W.P. Kuala Lumpur' ? 'Kuala Lumpur' : datum.state",
+        "as": "state_clean"
+    },
+
+    {
+        "calculate":
+        "datum.state_clean == 'W.P. Labuan' ? 'Labuan' : datum.state_clean",
+        "as": "state_clean2"
+    },
+
+    {
+        "calculate":
+        "datum.state_clean2 == 'W.P. Putrajaya' ? 'Putrajaya' : datum.state_clean2",
+        "as": "state_clean3"
+    },
+
+    {
+        "calculate":
+        "datum.state_clean3 == 'Pulau Pinang' ? 'Penang' : datum.state_clean3",
+        "as": "state_final"
+    },
+
+    {
+      "lookup": "state_final",
+
+      "from": {
+        "data": {
+          "url": "js/geoBoundaries-MYS-ADM1_simplified.topojson",
+
+          "format": {
+            "type": "topojson",
+            "feature": "MYSADM1gbOpen"
+          }
+        },
+
+        "key": "properties.shapeName"
+      },
+
+      "as": "geo"
+    }
+
+  ],
+
+  "layer": [
+
+    {
+      "data": {
+        "sphere": true
+      },
+
+      "mark": {
+        "type": "geoshape",
+        "fill": "#EEF5FB"
+      }
+    },
+
+    {
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#E5EEF7",
+        "strokeWidth": 0.5,
+        "strokeJoin": "round"
+      },
+      "encoding": {
+
+        "shape": {
+          "field": "geo",
+          "type": "geojson"
+        },
+
+        "color": {
+          "field": "lf",
+          "type": "quantitative",
+
+          "title": "Labour Force (Thousands)",
+
+          "scale": {
+            "scheme": "teals"
+          }
+        },
+
+        "tooltip": [
+
+          {
+            "field": "state_final",
+            "type": "nominal",
+            "title": "State"
+          },
+
+          {
+            "field": "lf",
+            "type": "quantitative",
+            "title": "Labour Force ('000)",
+            "format": ","
+          },
+
+          {
+            "field": "date",
+            "type": "temporal",
+            "title": "Quarter"
+          }
+
+        ]
+      }
+    }
+
+  ],
+
+  "config": {
+
+    "background": "#E5EEF7",
+
+    "view": {
+      "stroke": null
+    },
+
+    "legend": {
+      "titleFontSize": 14,
+      "labelFontSize": 12,
+      "orient": "bottom-right"
+    }
+  }
+}

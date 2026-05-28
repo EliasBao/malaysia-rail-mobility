@@ -83,9 +83,7 @@
           "#2F4F4F"
         ]
       },
-      "legend": {
-        "orient": "right"
-      }
+      "legend": null
     },
 
     "opacity": {

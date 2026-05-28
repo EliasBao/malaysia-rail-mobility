@@ -8,12 +8,20 @@
     "url": "data/ridership_ktmb_monthly.csv"
   },
 
+  "transform": [
+    {
+      "calculate":
+      "datum.service == 'komuter_utara' ? 'Komuter Utara' : datum.service == 'shuttle_tebrau' ? 'Shuttle Tebrau' : datum.service == 'intercity' ? 'Intercity' : datum.service == 'ets' ? 'ETS' : 'Komuter'",
+      "as": "service_label"
+    }
+  ],
+
   "params": [
     {
       "name": "legendHover",
       "select": {
         "type": "point",
-        "fields": ["service"],
+        "fields": ["service_label"],
         "on": "mouseover",
         "clear": "mouseout"
       },
@@ -53,7 +61,7 @@
     },
 
     "color": {
-      "field": "service",
+      "field": "service_label",
       "type": "nominal",
       "title": "Rail Service",
       "scale": {
@@ -70,7 +78,7 @@
     "tooltip": [
 
       {
-        "field": "service",
+        "field": "service_label",
         "type": "nominal",
         "title": "Rail Service"
       },

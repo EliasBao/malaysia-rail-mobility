@@ -38,7 +38,8 @@
 
           </p>
           <p class="author-text">
-            Author: Bao Yuyang | Date: May 2026
+            Author: Bao Yuyang | Student ID: 35316845<br>
+            Date: May 2026     | Data Visualization Ⅱ
           </p>
       </div>
   </div>
@@ -252,7 +253,7 @@
               SECTION 3
           </span>
           <span class="section-name">
-              — Pandemic and Recovery Storytelling
+              — Pandemic and Recovery 
           </span>
         </h2>
       </div>
@@ -422,7 +423,6 @@
       <!-- RIGHT COLUMN : Chart 12 -->
       <div class="pure-u-1-2">
         <div class="chart-card" style="height: 1000px;">
-
           <div class="chart-title-center">
             <h2>National Rail Network Structure</h2>
           </div>
@@ -439,13 +439,139 @@
 
             </p>
           </div>
-
         </div>
       </div>
-
     </div>
 
+    <!-- Section 5 Title -->
+    <div class="pure-g section-title-container">
+      <div class="pure-u-1-1">
+        <h2 class="section-title">
+          <span class="section-number">
+              SECTION 5
+          </span>
+          <span class="section-name">
+              — Spatial Mobility Inequality
+          </span>
+        </h2>
+      </div>
+    </div>
+
+    <!-- SECTION 5 : Full Width Choropleth -->
+    <div class="pure-g section">
+      <div class="pure-u-1">
+        <div class="chart-card" style="height: 980px;">
+          <!-- Chart Title -->
+          <div class="chart-title-center">
+            <h2>
+              Labour Force Concentration and Rail Mobility Dependence
+            </h2>
+          </div>
+
+          <!-- Vega-Lite Map -->
+          <div id="vis13" class="vis-container"></div>
+          <!-- Annotation -->
+          <div class="annotation-center">
+
+            <p class="why-text">
+
+              Labour force activity remains highly concentrated
+              within Selangor, Kuala Lumpur, and Johor, reinforcing
+              the spatial dependence of Malaysia’s commuter mobility
+              system on economically dominant urban corridors and
+              metropolitan transportation infrastructure.
+
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- DATA SOURCES & METHODOLOGY -->
+    <div class="section methodology-section">
+
+      <h2 class="why-title">
+        <span class="section-number">
+          Data Sources & Methodology
+        </span>
+      </h2>
+
+      <div class="section-divider"></div>
+
+      <div class="pure-g justify-center">
+
+        <!-- LEFT COLUMN -->
+        <div class="pure-u-11-24">
+          <div class="description-left">
+
+            <p class="why-text">
+
+              <strong>Data Sources</strong>
+
+            </p>
+
+            <p class="why-text">
+
+              • <a href="https://data.gov.my/data-catalogue" target="_blank">
+                Malaysia Open Data Portal
+                </a><br>
+
+              • <a href="https://www.geoboundaries.org/countryDownloads.html" target="_blank">
+                geoBoundaries Administrative Boundary Data
+                </a><br>
+              
+              • <a href="https://www.kaggle.com/datasets/niknmarjan/myrapidkl-train-dataset?select=Route.csv" target="_blank">
+                Kaggle RapidKL Train in Malaysia Dataset
+                </a><br>
+              
+              • <a href="https://www.kaggle.com/datasets/aisyahhrazak/public-transport-in-malaysia-lrt-mrt-ktm" target="_blank">
+                Kaggle Public Transport in Malaysia Dataset
+                </a><br>
+
+            </p>
+
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="pure-u-11-24">
+          <div class="description-right">
+
+            <p class="why-text">
+
+              <strong>Visualisation Idioms</strong>
+
+            </p>
+
+            <p class="why-text">
+
+              SECTION 1: Multi-line Chart; Streamgraph<br>
+
+              SECTION 2: Ranked Bar Chart; Calendar Heatmap;
+              Diverging Lollipop Chart<br>
+
+              SECTION 3: Layered Area-Line Chart; Slope Graph;
+              Donut Charts<br>
+
+              SECTION 4: Transit Topology Diagram;
+              Diverging Area Chart; Bubble Matrix Plot<br>
+
+              SECTION 5: Choropleth Map
+
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>
+        © 2026 Bao Yuyang. All visualisations created with Vega-Lite.
+      </p>
+    </div>
   </div>
+  
 
   <script type="text/javascript">
 
@@ -461,6 +587,7 @@
     var specVis10 = "js/chart10.vg.json";
     var specVis11 = "js/chart11.vg.json";
     var specVis12 = "js/chart12.vg.json";
+    var specVis13 = "js/chart13.vg.json";
     
 
     vegaEmbed('#vis1', specVis1, {"actions": false});
@@ -475,6 +602,7 @@
     vegaEmbed('#vis10', specVis10, {"actions": false});
     vegaEmbed('#vis11', specVis11, {"actions": false});
     vegaEmbed('#vis12', specVis12, {"actions": false});
+    vegaEmbed('#vis13', specVis13, {"actions": false});
     
 
   </script>
