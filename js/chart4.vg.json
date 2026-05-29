@@ -39,6 +39,11 @@
     {
       "calculate": "datum.growth_percentage >= 0 ? 'Positive Growth' : 'Negative Growth'",
       "as": "growth_direction"
+    },
+    {
+      "calculate":
+      "datum.service == 'komuter_utara' ? 'Komuter Utara' : datum.service == 'shuttle_tebrau' ? 'Shuttle Tebrau' : datum.service == 'ets' ? 'ETS' : datum.service == 'intercity' ? 'Intercity' : 'Komuter'",
+      "as": "service_label"
     }
 
   ],
@@ -46,7 +51,7 @@
   "encoding": {
 
     "y": {
-      "field": "service",
+      "field": "service_label",
       "type": "nominal",
       "sort": {
         "field": "growth_percentage",
@@ -61,6 +66,37 @@
   },
 
   "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0,
+            "label": "0% Benchmark"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#666666",
+        "align": "left",
+        "dx": 5,
+        "dy": -160
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    },
 
     {
       "mark": {
@@ -139,7 +175,7 @@
 
         "tooltip": [
           {
-            "field": "service",
+            "field": "service_label",
             "type": "nominal",
             "title": "Rail Service"
           },
@@ -177,7 +213,86 @@
           "format": ".1f"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "service_label": "Shuttle Tebrau",
+            "growth_percentage": 55.5,
+            "note": "Only service with\npositive growth"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": -150,
+        "dy": -15,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#002FA7"
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "growth_percentage",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "service_label",
+          "type": "nominal"
+        },
+
+        "text": {
+          "field": "note"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "service_label": "ETS",
+            "growth_percentage": -92.6,
+            "note": "Largest ridership decline"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 15,
+        "dy": -15,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#555555"
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "growth_percentage",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "service_label",
+          "type": "nominal"
+        },
+
+        "text": {
+          "field": "note"
+        }
+      }
     }
+    
 
   ],
 

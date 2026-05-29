@@ -59,6 +59,66 @@
   "layer": [
 
     {
+      "data": {
+        "values": [
+          {
+            "threshold": 3000000
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "rule",
+        "strokeDash": [8,8],
+        "strokeWidth": 2,
+        "color": "#888888"
+      },
+
+      "encoding": {
+        "y": {
+          "field": "threshold",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "threshold": 3000000,
+            "label": "High-demand service threshold"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#666666",
+        "dx": 250,
+        "dy": -10
+      },
+
+      "encoding": {
+
+        "x": {
+          "value": 340
+        },
+
+        "y": {
+          "field": "threshold",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+
+    {
       "mark": {
         "type": "rule",
         "strokeDash": [4,4],

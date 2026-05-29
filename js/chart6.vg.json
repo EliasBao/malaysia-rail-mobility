@@ -99,6 +99,146 @@
         "size": 45,
         "color": "#2F5D8C"
       }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "event_date": "2023-09-01"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "rule",
+        "color": "#7A7A7A",
+        "strokeWidth": 2,
+        "strokeDash": [8,8]
+      },
+
+      "encoding": {
+        "x": {
+          "field": "event_date",
+          "type": "temporal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "event_date": "2023-09-01",
+            "ridership": 2200000,
+            "label": "2023 Sep-Oct"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "color": "#333333",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -60,
+        "dy": -10
+      },
+
+      "encoding": {
+        "x": {
+          "field": "event_date",
+          "type": "temporal"
+        },
+
+        "y": {
+          "field": "ridership",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "event_date": "2023-09-01",
+            "ridership": 2050000,
+            "label": "Post-pandemic recovery\nand mobility normalization"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "color": "#444444",
+        "align": "right",
+        "lineBreak": "\n",
+        "dx": -65,
+        "dy": -20
+      },
+
+      "encoding": {
+        "x": {
+          "field": "event_date",
+          "type": "temporal"
+        },
+
+        "y": {
+          "field": "ridership",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "x1": "2023-06-01",
+            "y1": 2050000,
+            "x2": "2023-08-20",
+            "y2": 1800000
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2,
+        "color": "#666666"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x1",
+          "type": "temporal"
+        },
+
+        "y": {
+          "field": "y1",
+          "type": "quantitative"
+        },
+
+        "x2": {
+          "field": "x2"
+        },
+
+        "y2": {
+          "field": "y2"
+        }
+      }
     }
 
   ],
