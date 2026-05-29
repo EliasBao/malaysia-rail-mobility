@@ -194,7 +194,7 @@
         "type": "text",
         "align": "left",
         "baseline": "middle",
-        "dx": 10,
+        "dy": 12,
         "fontSize": 11,
         "color": "#444"
       },

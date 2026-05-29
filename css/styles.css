@@ -122,6 +122,16 @@ body {
     color: #24344d;
 }
 
+.section-transition {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.8;
+    color: #24344d;
+    max-width: 1200px;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
 
 .section-title-container {
     margin-bottom: 20px;
